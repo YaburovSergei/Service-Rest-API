@@ -33,13 +33,14 @@ public class AccountController {
     public AccountResponseDTO getAccount(@PathVariable Long id) {
         return new AccountResponseDTO(accountService.getAccountById(id));
     }
+
     @RequestMapping(value = "/accounts/delete/{id}", method = RequestMethod.DELETE)
     public void deleteAccount(@PathVariable Long id) {
         accountService.deleteAccountById(id);
     }
 
-    @RequestMapping(value = "/customer/change/{id}", method = RequestMethod.PUT)
-    public Account modificationAccount(@PathVariable Long id, @RequestBody  AccountRequestDTO accountRequestDTO) {
+    @RequestMapping(value = "/accounts/modification/{id}", method = RequestMethod.PUT)
+    public Account modificationAccount(@PathVariable Long id, @RequestBody AccountRequestDTO accountRequestDTO) {
         return accountService.modificationAccount(id, accountRequestDTO.getName(), accountRequestDTO.getSurname(),
                 accountRequestDTO.getDateBirth(), accountRequestDTO.getAddressResidence());
     }
